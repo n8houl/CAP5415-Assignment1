@@ -143,15 +143,19 @@ def thresh(ival, peaks, hi, lo):
 
 def detect_edges(filename):
     filename = filename.split('.')[0]
+    containing_folder = filename.split('/')[0]
+    img_name = filename.split('/')[1]
     I = get_img('%s.png' % filename)
     kx, ky = gaussian_mask(3)
     C1, C2 = convolute(I, kx, ky)
-    put_img(C1, '%s_xdir.png' % filename)
-    put_img(C2, '%s_ydir.png' % filename)
+    put_img(C1, '%s/q1/%s_xdir.png' % (containing_folder, img_name))
+    put_img(C2, '%s/q1/%s_ydir.png' % (containing_folder, img_name))
     ival = magnitude(C1, C2, kx)
-    put_img(ival, '%s_mag.png' % filename)
+    put_img(ival, '%s/q1/%s_mag.png' % (containing_folder, img_name))
     peaks_img = peaks(C1, C2, ival, kx)
     final = thresh(ival, peaks_img, .3, .6)
-    put_img(final, '%s_final.png' % filename)
+    put_img(final, '%s/q1/%s_final.png' % (containing_folder, img_name))
+
+    print("Output generated in %/q1/" % containing_folder)
 
 detect_edges('img/input3.png')
