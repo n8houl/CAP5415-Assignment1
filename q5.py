@@ -144,6 +144,10 @@ def clip(I, a, b, beta):
     END PART 2 CODE
 """
 
+
+"""
+    PART 3 CODE
+"""
 def rangeCompressionFunction(i, c):
     return c * math.log10(1 + i)
 
@@ -157,10 +161,6 @@ def rangeCompression(I, c):
             new_img[i][j] = rangeCompressionFunction(I[i][j], c)
 
     return new_img
-"""
-    PART 3 CODE
-"""
-
 
 """
     END PART 3 CODE

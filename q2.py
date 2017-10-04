@@ -114,8 +114,7 @@ def sumEntropies(I):
 
         total_entropy = eFunc(A) + eFunc(B)
 
-        if total_entropy > max_entropy:
-            print(str(total_entropy) + " > " + str(max_entropy) + " @ T = %d" % T)
+        if total_entropy < max_entropy:
             max_entropy_thresh = T
             max_entropy = total_entropy
 
@@ -129,7 +128,7 @@ new_img = I
 for i in range(len(I)):
     for j in range(len(I[0])):
         if I[i][j] >= optimum_thresh:
-            new_img[i][j] = 255
+            new_img[i][j] = 1.0
         else:
             new_img[i][j] = 0
 print(optimum_thresh)
